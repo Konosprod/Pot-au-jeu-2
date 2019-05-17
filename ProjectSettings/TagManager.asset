@@ -33,10 +33,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Mob
+  - PlayerShot
+  - MobShot
   m_SortingLayers:
   - name: Default
     uniqueID: 0
