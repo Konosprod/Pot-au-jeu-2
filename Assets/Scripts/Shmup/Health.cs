@@ -10,9 +10,9 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         hp -= damage;
-        if(hp <= 0f)
+        if (hp <= 0f)
         {
-            if(gameObject.layer == LayerMask.NameToLayer("Player"))
+            if (gameObject.layer == LayerMask.NameToLayer("PlayerShmup"))
             {
                 // GameOver
             }
@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
         BulletController bullet = otherCollider.gameObject.GetComponent<BulletController>();
-        if(bullet != null && !bullet.hasHit && alive)
+        if (bullet != null && !bullet.hasHit && alive)
         {
             TakeDamage(bullet.damage);
             bullet.hasHit = true;
