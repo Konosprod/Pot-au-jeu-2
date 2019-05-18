@@ -16,10 +16,10 @@ TagManager:
   - PostProcessing
   - 
   - Player
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Holes
+  - Ladder
+  - Coins
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: PlayerSort
     uniqueID: 1633747727
+    locked: 0
+  - name: Foreground
+    uniqueID: 2973167639
     locked: 0
