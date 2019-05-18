@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float hp = 3.0f;
-    private bool alive = true;
+    public bool alive = true;
 
     public void TakeDamage(float damage)
     {
@@ -29,7 +29,6 @@ public class Health : MonoBehaviour
             TakeDamage(bullet.damage);
             bullet.hasHit = true;
             Destroy(bullet.gameObject);
-            Debug.Log("My layer : " + LayerMask.LayerToName(gameObject.layer) + ", bullet layer : " + LayerMask.LayerToName(otherCollider.gameObject.layer));
         }
     }
 }
