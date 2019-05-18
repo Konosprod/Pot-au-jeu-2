@@ -6,6 +6,7 @@ public class PlayerPlateformerController : MonoBehaviour
 {
 
     public CharacterController2D controller;
+    public Animator animator;
 
     public float runSpeed = 40f;
 
@@ -22,6 +23,8 @@ public class PlayerPlateformerController : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
 
         if(Input.GetButtonDown("Jump"))
         {
