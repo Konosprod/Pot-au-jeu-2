@@ -33,11 +33,26 @@ TagManager:
   - 
   - 
   - 
-  - Player
+  - PlayerShmup
   - Mob
   - PlayerShot
   - MobShot
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2289472181
+    locked: 0
+  - name: Platforms
+    uniqueID: 2039589571
+    locked: 0
+  - name: Enemies
+    uniqueID: 1868202377
+    locked: 0
+  - name: Bullets
+    uniqueID: 1912800909
+    locked: 0
+  - name: PlayerSort
+    uniqueID: 1633747727
     locked: 0

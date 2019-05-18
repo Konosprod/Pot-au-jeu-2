@@ -22,6 +22,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+
+        float dist = (transform.position - Camera.main.transform.position).z;
+
+        float leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist * 0.5f)).x;
+        float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0, dist)).x;
+        float topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).y;
+        float bottomBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, dist)).y;
+
+        transform.position = new Vector3(
+          Mathf.Clamp(transform.position.x, leftBorder + 0.5f, rightBorder - 0.5f),
+          Mathf.Clamp(transform.position.y, topBorder + 0.5f, bottomBorder - 0.5f),
+          transform.position.z
+        );
     }
 
 
@@ -36,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
 
         // Shooting
-        if(Input.GetButton("Fire1") || Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
         {
             shoot.Attack();
         }
