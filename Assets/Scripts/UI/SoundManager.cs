@@ -7,17 +7,12 @@ using UnityEngine.Audio;
 public enum SoundType
 {
     None,
-    Home,
-    Calm,
-    Fight,
-    Boss
+    Home
 };
 
 public enum SFXType
 {
-    None,
-    ButtonClick,
-    FateClick
+    None
 };
 
 public class SoundManager : MonoBehaviour

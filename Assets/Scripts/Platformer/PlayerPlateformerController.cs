@@ -43,6 +43,11 @@ public class PlayerPlateformerController : MonoBehaviour
         verticalMove = Input.GetAxis("Vertical") * climbSpeed;
 
 
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            ui.SwitchToUpgradeUI();
+        }
+
         if(Input.GetButtonDown("Jump"))
         {
             jump = true;

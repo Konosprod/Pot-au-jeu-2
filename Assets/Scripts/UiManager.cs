@@ -2,9 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    [Header("Cams")]
+    public GameObject camPlatformer;
+    public GameObject camShmup;
+    public GameObject camUpgrade;
+
+    [Header("UI")]
+    public GameObject LifePointsPanel;
+    public GameObject UpgradesPanel;
+
+    [Header("Sign")]
+    public GameObject textBox;
+    public Text signText;
+
     public HP[] LifePoints;
     public TextMeshProUGUI leafText;
 
@@ -18,6 +32,17 @@ public class UiManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ShowText(string text)
+    {
+        signText.text = text;
+        textBox.gameObject.SetActive(true);
+    }
+
+    public void HideText()
+    {
+        textBox.gameObject.SetActive(false);
     }
 
     public void UpdateLeaves(int leaves)
@@ -39,6 +64,20 @@ public class UiManager : MonoBehaviour
         {
             LifePoints[0].Hit();
         }
+    }
+
+    public void SwitchToUpgradeUI()
+    {
+        camPlatformer.SetActive(false);
+        camUpgrade.SetActive(true);
+        LifePointsPanel.SetActive(false);
+        UpgradesPanel.SetActive(true);
+    }
+
+    public void SwitchToShmupUI()
+    {
+        camUpgrade.SetActive(false);
+        camShmup.SetActive(true);
     }
 
     private string IntToSprite(int number)

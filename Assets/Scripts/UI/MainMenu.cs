@@ -19,14 +19,7 @@ public class MainMenu : MonoBehaviour {
 
     public void PlayGame()
     {
-        if(SettingsManager._instance.gameSettings.firstRun == false)
-        {
-            fader.StartFadetoScene("Game");
-        }
-        else
-        {
-            fader.StartFadetoScene("Game");
-        }
+        fader.StartFadetoScene("Kono_dev");
     }
 
     public void QuitGame()
