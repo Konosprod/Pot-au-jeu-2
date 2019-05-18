@@ -4,23 +4,45 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController _instance;
+
     [Header("Movement")]
     public float speedHorizontal = 10f;
     public float speedVertical = 10f;
     public Rigidbody2D rb;
 
-    [Header("Shooting")]
-    public Shoot shoot;
+
+    private Shoot[] shoots;
+    private ParallaxScrolling scrolling;
+
+    private float inputHorizontal;
+    private float inputVertical;
+
+    void Awake()
+    {
+        if(_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        shoots = GetComponents<Shoot>();
+        scrolling = GetComponent<ParallaxScrolling>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Movement
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        inputVertical = Input.GetAxisRaw("Vertical");
 
 
         float dist = (transform.position - Camera.main.transform.position).z;
@@ -40,10 +62,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Movement
-        float inputHorizontal = Input.GetAxisRaw("Horizontal");
-        float inputVertical = Input.GetAxisRaw("Vertical");
-
         Vector3 movement = new Vector2(inputHorizontal * speedHorizontal, inputVertical * speedVertical);
         rb.velocity = movement;
 
@@ -51,7 +69,8 @@ public class PlayerController : MonoBehaviour
         // Shooting
         if (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
         {
-            shoot.Attack();
+            foreach(Shoot shoot in shoots)
+                shoot.Attack();
         }
     }
 
@@ -77,5 +96,13 @@ public class PlayerController : MonoBehaviour
             Health playerHealth = this.GetComponent<Health>();
             if (playerHealth != null) playerHealth.TakeDamage(2f);
         }
+    }
+
+
+    // The player stops scrolling during the boss fights
+    public void Scrolling(bool start)
+    {
+        if(scrolling != null)
+            scrolling.enabled = start;
     }
 }

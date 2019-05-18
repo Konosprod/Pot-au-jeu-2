@@ -9,6 +9,8 @@ public class BulletController : MonoBehaviour
 
     public bool hasHit = false;
 
+    private Renderer rend;
+
     [HideInInspector]
     public Vector2 direction;
 
@@ -17,9 +19,18 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 2.5f); // Self-destruct after 2.5 seconds
+        rend = GetComponent<Renderer>();
     }
 
+    void Update()
+    {
+        // Destroy bullets if they go off-screen
+        if (!rend.IsVisibleFrom(Camera.main))
+        {
+            hasHit = true;
+            Destroy(gameObject);
+        }
+    }
 
     void FixedUpdate()
     {

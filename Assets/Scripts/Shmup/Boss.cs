@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMob : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     public float speed = 5f;
-    public Vector2 direction = new Vector2(0f, -1f);
-
 
     private Shoot[] shoots;
     private Rigidbody2D rb;
@@ -15,6 +13,11 @@ public class BasicMob : MonoBehaviour
 
     private bool isSpawned = false;
 
+    private Vector3 startPos;
+
+    private float initialMovementTimer = 0.5f;
+    private float randFactorStart = 0f;
+    public float sineMoveSpeed = 0.5f;
 
     void Awake()
     {
@@ -32,6 +35,8 @@ public class BasicMob : MonoBehaviour
             shoot.enabled = false;
         }
         col.enabled = false;
+        startPos = transform.position;
+        randFactorStart = Random.Range(-0.5f, 0.5f);
     }
 
     // Update is called once per frame
@@ -40,7 +45,7 @@ public class BasicMob : MonoBehaviour
         if (!isSpawned)
         {
             // Activate enemies when they are on screen
-            if(rend.IsVisibleFrom(Camera.main))
+            if (rend.IsVisibleFrom(Camera.main))
             {
                 isSpawned = true;
                 foreach (Shoot shoot in shoots)
@@ -48,6 +53,8 @@ public class BasicMob : MonoBehaviour
                     shoot.enabled = true;
                 }
                 col.enabled = true;
+
+                PlayerController._instance.Scrolling(false);
             }
         }
         else
@@ -57,21 +64,26 @@ public class BasicMob : MonoBehaviour
             {
                 shoot.Attack();
             }
-
-            // Destroy enemies if they go off-screen after being activated
-            if (!rend.IsVisibleFrom(Camera.main))
-            {
-                Destroy(gameObject);
-            }
         }
     }
 
     void FixedUpdate()
     {
-        // Always move in the set direction when active
         if (isSpawned)
         {
-            rb.velocity = direction.normalized * speed;
+            // Movement logic
+            if (initialMovementTimer > 0f)
+            {
+                initialMovementTimer -= Time.fixedDeltaTime;
+                startPos += new Vector3(0f, -speed * Time.fixedDeltaTime, 0f);
+            }
+
+            transform.position = startPos + new Vector3(randFactorStart + Mathf.Sin(Time.time * sineMoveSpeed) * 2f , -Mathf.Sin(Time.time * (0.5f / sineMoveSpeed)), 0.0f);
         }
+    }
+
+    void OnDestroy()
+    {
+        PlayerController._instance.Scrolling(true);
     }
 }

@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Single forward shot
 public class Shoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
     // Shots per second
     public float fireRate = 6f;
-    private float shootDelay;
+    protected float shootDelay;
+    public float initialDelay = 0.3f;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        shootDelay = 0.3f;
+        shootDelay = initialDelay;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (shootDelay > 0f)
         {
@@ -24,7 +26,7 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
         if (shootDelay <= 0f)
         {
