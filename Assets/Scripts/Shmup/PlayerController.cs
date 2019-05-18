@@ -25,10 +25,10 @@ public class PlayerController : MonoBehaviour
 
         float dist = (transform.position - Camera.main.transform.position).z;
 
-        float leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist * 0.5f)).x;
-        float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0, dist)).x;
-        float topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).y;
-        float bottomBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, dist)).y;
+        float leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, dist)).x;
+        float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1f, 0f, dist)).x;
+        float topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, dist)).y;
+        float bottomBorder = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, dist)).y;
 
         transform.position = new Vector3(
           Mathf.Clamp(transform.position.x, leftBorder + 0.5f, rightBorder - 0.5f),
@@ -55,4 +55,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        bool damagePlayer = false;
+
+        // Collision with enemy
+        BasicMob enemy = collision.gameObject.GetComponent<BasicMob>();
+        if (enemy != null)
+        {
+            // Kill the enemy
+            Health enemyHealth = enemy.GetComponent<Health>();
+            damagePlayer = enemyHealth.alive;
+            if (enemyHealth != null) enemyHealth.TakeDamage(enemyHealth.hp);
+        }
+
+        // Damage the player
+        if (damagePlayer)
+        {
+            Health playerHealth = this.GetComponent<Health>();
+            if (playerHealth != null) playerHealth.TakeDamage(2f);
+        }
+    }
 }

@@ -17,7 +17,7 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 5f); // Self-destruct after 5 seconds
+        Destroy(gameObject, 2.5f); // Self-destruct after 2.5 seconds
     }
 
 

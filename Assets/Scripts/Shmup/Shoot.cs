@@ -12,7 +12,7 @@ public class Shoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shootDelay = 0f;
+        shootDelay = 0.3f;
     }
 
     // Update is called once per frame
