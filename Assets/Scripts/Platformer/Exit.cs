@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Exit : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (collider.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerPlateformerController>().ToUpgrade();
+            collider.gameObject.GetComponent<PlayerPlateformerController>().ToUpgrade();
         }
     }
 }

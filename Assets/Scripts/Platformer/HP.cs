@@ -24,7 +24,7 @@ public class HP : MonoBehaviour
         
     }
 
-    public void Hit()
+    public bool Hit()
     {
         state--;
 
@@ -37,6 +37,11 @@ public class HP : MonoBehaviour
         {
             image.sprite = empty;
         }
+
+        if (state == 0)
+            return false;
+        else
+            return true;
     }
 
     public void ResetHP()

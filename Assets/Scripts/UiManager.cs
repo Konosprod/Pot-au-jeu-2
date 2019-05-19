@@ -10,9 +10,10 @@ public class UiManager : MonoBehaviour
     [Header("UI")]
     public GameObject LifePointsPanel;
     public GameObject UpgradesPanel;
-    public HP[] LifePoints;
+    public GameObject hpPrefab;
     public TextMeshProUGUI leafText;
     public GameObject leavesPanel;
+    private List<HP> hp;
 
     [Header("Games Container")]
     public GameObject platformerObject;
@@ -24,6 +25,10 @@ public class UiManager : MonoBehaviour
     public Text signText;
 
 
+    void Awake()
+    {
+        hp = new List<HP>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -53,20 +58,27 @@ public class UiManager : MonoBehaviour
         leafText.text = IntToSprite(leaves);
     }
 
-    public void UpdateHPPlatformer(float life)
+    public void SetHP(float life)
     {
-        if (life >= 2)
+        for(int i = 0; i < hp.Count; i++)
         {
-            LifePoints[2].Hit();
+            GameObject o = hp[i].gameObject;
+            hp.RemoveAt(i);
+            Destroy(o);
         }
-        else if (life >= 1.0)
+
+        float nbCoeur = Mathf.Ceil(life / 2);
+
+        for(float f = 0; f < nbCoeur; f++)
         {
-            LifePoints[1].Hit();
+            GameObject o = Instantiate(hpPrefab, LifePointsPanel.transform);
+            hp.Add(o.GetComponent<HP>());
         }
-        else
-        {
-            LifePoints[0].Hit();
-        }
+    }
+
+    public void UpdateHP(float life)
+    {
+        hp[(int)life / 2].Hit();
     }
 
     public void SwitchToUpgradeUI()
@@ -80,16 +92,20 @@ public class UiManager : MonoBehaviour
     public void SwitchToShmupUI()
     {
         upgradeObject.SetActive(false);
+        leavesPanel.SetActive(false);
         shmupObject.SetActive(true);
-        LifePoints[3].gameObject.SetActive(true);
-        LifePoints[4].gameObject.SetActive(true);
-
     }
 
     private string IntToSprite(int number)
     {
         int num = number;
         List<string> spriteTags = new List<string>();
+
+        if(num == 0)
+        {
+            return "<sprite index=0>";
+        }
+
         while(num > 0)
         {
             int digit = num % 10;

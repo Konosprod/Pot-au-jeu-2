@@ -20,8 +20,8 @@ public class PlayerPlateformerController : MonoBehaviour
     public float blinkingTime = .2f;
     float blinkTimer;
 
-    float life = 3.0f;
-    int leaves = 0;
+    float life = 6f;
+    public int leaves = 0;
 
     float horizontalMove = 0f;
     float verticalMove = 0f;
@@ -32,6 +32,8 @@ public class PlayerPlateformerController : MonoBehaviour
     {
         hitTimer = invincibilityTime;
         blinkTimer = blinkingTime;
+
+        ui.SetHP(life);
     }
 
     // Update is called once per frame
@@ -89,9 +91,9 @@ public class PlayerPlateformerController : MonoBehaviour
             hitTimer = 0;
             StartCoroutine(blink());
 
-            life -= .5f;
+            life -= 1f;
 
-            ui.UpdateHPPlatformer(life);
+            ui.UpdateHP(life);
 
             if(life <= 0)
             {
