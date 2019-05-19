@@ -7081,9 +7081,9 @@ PrefabInstance:
       objectReference: {fileID: 1991906741}
     - target: {fileID: 114766110652444142, guid: b98b91f9da04e2241b7de9c8f38d4fa4,
         type: 3}
-      propertyPath: dropdownResolutions
+      propertyPath: sliderVolumeSFX
       value: 
-      objectReference: {fileID: 1545734778}
+      objectReference: {fileID: 1473673169}
     - target: {fileID: 114766110652444142, guid: b98b91f9da04e2241b7de9c8f38d4fa4,
         type: 3}
       propertyPath: sliderVolumeBGM
@@ -7091,9 +7091,9 @@ PrefabInstance:
       objectReference: {fileID: 1258476501}
     - target: {fileID: 114766110652444142, guid: b98b91f9da04e2241b7de9c8f38d4fa4,
         type: 3}
-      propertyPath: sliderVolumeSFX
+      propertyPath: dropdownResolutions
       value: 
-      objectReference: {fileID: 1473673169}
+      objectReference: {fileID: 1545734778}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98b91f9da04e2241b7de9c8f38d4fa4, type: 3}
 --- !u!114 &2017048370 stripped

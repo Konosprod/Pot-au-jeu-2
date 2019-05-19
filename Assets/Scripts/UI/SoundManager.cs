@@ -76,6 +76,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(SoundType type, bool forceReplay = false)
     {
+        Debug.Log("here");
         if (forceReplay && type == actuallyPlaying)
         {
             bgmSource.Stop();
@@ -85,8 +86,10 @@ public class SoundManager : MonoBehaviour
         }
 
         if (!forceReplay && type == actuallyPlaying)
+        {
+            Debug.Log("wat");
             return;
-
+        }
         bgmSource.Stop();
         bgmSource.loop = true;
         bgmSource.clip = audioClips[type];
@@ -103,6 +106,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(SFXType type)
     {
+        Debug.Log(type);
         sfxSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         sfxSource.PlayOneShot(sfxClips[type]);
     }

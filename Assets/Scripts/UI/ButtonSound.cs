@@ -25,6 +25,6 @@ public class ButtonSound : MonoBehaviour
 
     private void PlayClickSound()
     {
-        SoundManager._instance.PlaySFX(onClickSound);
+        //SoundManager._instance.PlaySFX(onClickSound);
     }
 }

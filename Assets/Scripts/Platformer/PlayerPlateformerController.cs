@@ -46,6 +46,7 @@ public class PlayerPlateformerController : MonoBehaviour
         verticalMove = Input.GetAxis("Vertical") * climbSpeed;
 
 
+        /*
         if(Input.GetKeyDown(KeyCode.C))
         {
             ui.SwitchToUpgradeUI();
@@ -55,6 +56,7 @@ public class PlayerPlateformerController : MonoBehaviour
         {
             ui.SwitchToShmupUI();
         }
+        */
 
         if(Input.GetButtonDown("Jump"))
         {
@@ -98,7 +100,7 @@ public class PlayerPlateformerController : MonoBehaviour
 
             if(life <= 0)
             {
-                ui.GameOver();
+                ui.GameOver(false);
                 Destroy(this);
             }
 

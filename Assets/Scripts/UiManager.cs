@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI leafText;
     public GameObject leavesPanel;
     public GameObject gameOverPanel;
+    public GameObject gameOverPanel2;
     private List<HP> hp;
 
     [Header("Games Container")]
@@ -104,11 +106,25 @@ public class UiManager : MonoBehaviour
         LifePointsPanel.SetActive(true);
     }
 
-    public void GameOver()
+    public void GameOver(bool trueEnd)
     {
-        gameOverPanel.SetActive(true);
-        LifePointsPanel.SetActive(false);
-        leavesPanel.SetActive(false);
+        if (trueEnd)
+        {
+            gameOverPanel.SetActive(true);
+            LifePointsPanel.SetActive(false);
+            leavesPanel.SetActive(false);
+        }
+        else
+        {
+            gameOverPanel2.SetActive(true);
+            LifePointsPanel.SetActive(false);
+            leavesPanel.SetActive(false);
+        }
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("Main");
     }
 
     private string IntToSprite(int number)
