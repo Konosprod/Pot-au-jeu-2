@@ -33,8 +33,8 @@ public class MultiShot : Shoot
             {
                 float angle = (i - projPerSide) * individualAngle;
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-                bullet.GetComponent<BulletController>().direction = Quaternion.Euler(0f,0f,angle) * transform.up;
-                bullet.transform.Rotate(new Vector3(0f, 0f, angle));
+                bullet.GetComponent<BulletController>().direction = Quaternion.Euler(0f,0f,angle) * transform.right;
+                bullet.transform.Rotate(new Vector3(0f, 0f, angle - 90f));
             }
         }
     }

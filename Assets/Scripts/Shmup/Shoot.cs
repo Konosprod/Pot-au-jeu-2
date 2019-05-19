@@ -33,7 +33,8 @@ public class Shoot : MonoBehaviour
             shootDelay = 1f / fireRate;
 
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            bullet.GetComponent<BulletController>().direction = transform.up;
+            bullet.GetComponent<BulletController>().direction = transform.right;
+            bullet.transform.Rotate(new Vector3(0f, 0f, -90f));
         }
     }
 }
