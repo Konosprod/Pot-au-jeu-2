@@ -91,6 +91,7 @@ public class UiManager : MonoBehaviour
 
     public void SwitchToShmupUI()
     {
+        UpgradesPanel.SetActive(false);
         upgradeObject.SetActive(false);
         leavesPanel.SetActive(false);
         shmupObject.SetActive(true);
