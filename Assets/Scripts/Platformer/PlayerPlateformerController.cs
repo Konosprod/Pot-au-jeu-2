@@ -97,7 +97,8 @@ public class PlayerPlateformerController : MonoBehaviour
 
             if(life <= 0)
             {
-                Debug.Log("Dead");
+                ui.GameOver();
+                Destroy(this);
             }
 
         }

@@ -14,6 +14,7 @@ public class UiManager : MonoBehaviour
     public GameObject hpPrefab;
     public TextMeshProUGUI leafText;
     public GameObject leavesPanel;
+    public GameObject gameOverPanel;
     private List<HP> hp;
 
     [Header("Games Container")]
@@ -101,6 +102,13 @@ public class UiManager : MonoBehaviour
         leavesPanel.SetActive(false);
         shmupObject.SetActive(true);
         LifePointsPanel.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+        LifePointsPanel.SetActive(false);
+        leavesPanel.SetActive(false);
     }
 
     private string IntToSprite(int number)
