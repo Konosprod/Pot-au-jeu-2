@@ -68,7 +68,7 @@ public class UiManager : MonoBehaviour
     {
         Debug.Log("SetHP : " + life);
 
-        for(int i = 0; i < hp.Count; i++)
+        for(int i = hp.Count - 1; i >= 0; i--)
         {
             GameObject o = hp[i].gameObject;
             hp.RemoveAt(i);
