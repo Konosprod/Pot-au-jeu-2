@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a8325c725dfc540b58fa39d8227fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  hp: 2.5
   alive: 1
 --- !u!114 &-2811341253486064321
 MonoBehaviour:
@@ -119,6 +119,7 @@ MonoBehaviour:
     type: 3}
   fireRate: 1.2
   initialDelay: 0.15
+  damage: 1
 --- !u!114 &8430965987655108070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +136,7 @@ MonoBehaviour:
     type: 3}
   fireRate: 0.1
   initialDelay: 1.2
+  damage: 1
   nbProj: 5
   maxTotalAngle: 80
   maxIndividualAngle: 20

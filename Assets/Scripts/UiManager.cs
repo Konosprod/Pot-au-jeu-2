@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    public static UiManager _instance;
 
     [Header("UI")]
     public GameObject LifePointsPanel;
@@ -28,6 +29,8 @@ public class UiManager : MonoBehaviour
     void Awake()
     {
         hp = new List<HP>();
+
+        _instance = this;
     }
     // Start is called before the first frame update
     void Start()
@@ -60,6 +63,8 @@ public class UiManager : MonoBehaviour
 
     public void SetHP(float life)
     {
+        Debug.Log("SetHP : " + life);
+
         for(int i = 0; i < hp.Count; i++)
         {
             GameObject o = hp[i].gameObject;
@@ -95,6 +100,7 @@ public class UiManager : MonoBehaviour
         upgradeObject.SetActive(false);
         leavesPanel.SetActive(false);
         shmupObject.SetActive(true);
+        LifePointsPanel.SetActive(true);
     }
 
     private string IntToSprite(int number)

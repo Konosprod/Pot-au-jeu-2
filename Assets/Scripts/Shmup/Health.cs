@@ -7,6 +7,14 @@ public class Health : MonoBehaviour
     public float hp = 3.0f;
     public bool alive = true;
 
+    void OnEnable()
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("PlayerShmup"))
+        {
+            UiManager._instance.SetHP(hp);
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         hp -= damage;
@@ -18,6 +26,13 @@ public class Health : MonoBehaviour
             }
             alive = false;
             Destroy(gameObject);
+        }
+        else
+        {
+            if (gameObject.layer == LayerMask.NameToLayer("PlayerShmup"))
+            {
+                UiManager._instance.UpdateHP(hp);
+            }
         }
     }
 
