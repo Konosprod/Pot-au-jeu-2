@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
         {
             if (gameObject.layer == LayerMask.NameToLayer("PlayerShmup"))
             {
-                // GameOver
+                UiManager._instance.GameOver(true);
             }
             alive = false;
             Destroy(gameObject);
