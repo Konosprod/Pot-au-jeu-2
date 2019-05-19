@@ -43,9 +43,14 @@ public class PlayerPlateformerController : MonoBehaviour
         verticalMove = Input.GetAxis("Vertical") * climbSpeed;
 
 
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.C))
         {
             ui.SwitchToUpgradeUI();
+        }
+
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            ui.SwitchToShmupUI();
         }
 
         if(Input.GetButtonDown("Jump"))
@@ -66,6 +71,11 @@ public class PlayerPlateformerController : MonoBehaviour
         jump = false;
     }
 
+    public void ToUpgrade()
+    {
+        ui.SwitchToUpgradeUI();
+    }
+
     public void Eat()
     {
         leaves++;
@@ -81,7 +91,7 @@ public class PlayerPlateformerController : MonoBehaviour
 
             life -= .5f;
 
-            ui.UpdateHP(life);
+            ui.UpdateHPPlatformer(life);
 
             if(life <= 0)
             {

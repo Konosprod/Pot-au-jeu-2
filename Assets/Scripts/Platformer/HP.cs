@@ -8,6 +8,7 @@ public class HP : MonoBehaviour
     public Image image;
     public Sprite half;
     public Sprite empty;
+    public Sprite full;
 
     private int state = 2;
 
@@ -36,5 +37,12 @@ public class HP : MonoBehaviour
         {
             image.sprite = empty;
         }
+    }
+
+    public void ResetHP()
+    {
+        state = 2;
+
+        image.sprite = full;
     }
 }

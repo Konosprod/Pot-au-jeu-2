@@ -6,7 +6,6 @@ public class Sign : MonoBehaviour
 {
 
     public string text;
-    public GameObject textBox;
 
     // Start is called before the first frame update
     void Start()
