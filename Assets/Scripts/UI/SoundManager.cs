@@ -7,12 +7,17 @@ using UnityEngine.Audio;
 public enum SoundType
 {
     None,
-    Home
+    Platformer,
+    Upgrade,
+    Metamorphosis,
+    End
+
 };
 
 public enum SFXType
 {
-    None
+    None,
+    Rain
 };
 
 public class SoundManager : MonoBehaviour

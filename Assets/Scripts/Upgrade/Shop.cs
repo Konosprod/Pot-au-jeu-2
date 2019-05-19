@@ -30,6 +30,7 @@ public class Shop : MonoBehaviour
     {
         leaves = plateformPlayer.leaves;
         shmupHealth = shmupPlayer.GetComponent<Health>();
+        SoundManager._instance.PlayMusic(SoundType.Upgrade);
     }
 
     // Update is called once per frame

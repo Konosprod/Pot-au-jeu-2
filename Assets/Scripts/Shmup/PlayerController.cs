@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         scrolling = GetComponent<ParallaxScrolling>();
+        SoundManager._instance.PlayMusic(SoundType.Metamorphosis);
+        SoundManager._instance.PlaySFX(SFXType.Rain);
     }
 
     // Update is called once per frame

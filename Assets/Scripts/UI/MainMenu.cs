@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SoundManager._instance.PlayMusic(SoundType.Home);
+        SoundManager._instance.PlayMusic(SoundType.Upgrade);
 	}
 	
 	// Update is called once per frame

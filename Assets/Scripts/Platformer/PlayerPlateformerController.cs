@@ -30,6 +30,7 @@ public class PlayerPlateformerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager._instance.PlayMusic(SoundType.Platformer);
         hitTimer = invincibilityTime;
         blinkTimer = blinkingTime;
 
