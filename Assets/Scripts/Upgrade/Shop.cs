@@ -138,7 +138,7 @@ public class Shop : MonoBehaviour
         }
     }
 
-    void Done()
+    public void Done()
     {
         ui.SwitchToShmupUI();
     }
