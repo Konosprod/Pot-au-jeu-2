@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
 
 
-    private Shoot[] shoots;
+    [Header("Attack")]
+    public Shoot mainShot;
+    public Shoot multiShot;
+
     private ParallaxScrolling scrolling;
 
     private float inputHorizontal;
@@ -33,7 +36,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shoots = GetComponents<Shoot>();
         scrolling = GetComponent<ParallaxScrolling>();
     }
 
@@ -67,10 +69,13 @@ public class PlayerController : MonoBehaviour
 
 
         // Shooting
-        if (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire1"))
         {
-            foreach(Shoot shoot in shoots)
-                shoot.Attack();
+            mainShot.Attack();
+        }
+        else if(Input.GetButton("Fire2"))
+        {
+            multiShot.Attack();
         }
     }
 
