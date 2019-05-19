@@ -6,21 +6,23 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    [Header("Cams")]
-    public GameObject camPlatformer;
-    public GameObject camShmup;
-    public GameObject camUpgrade;
 
     [Header("UI")]
     public GameObject LifePointsPanel;
     public GameObject UpgradesPanel;
+    public HP[] LifePoints;
+    public TextMeshProUGUI leafText;
+    public GameObject leavesPanel;
+
+    [Header("Games Container")]
+    public GameObject platformerObject;
+    public GameObject shmupObject;
+    public GameObject upgradeObject;
 
     [Header("Sign")]
     public GameObject textBox;
     public Text signText;
 
-    public HP[] LifePoints;
-    public TextMeshProUGUI leafText;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,12 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ShowText(string text)
     {
+        text = text.Replace("\\n", "\n");
         signText.text = text;
         textBox.gameObject.SetActive(true);
     }
@@ -50,7 +53,7 @@ public class UiManager : MonoBehaviour
         leafText.text = IntToSprite(leaves);
     }
 
-    public void UpdateHP(float life)
+    public void UpdateHPPlatformer(float life)
     {
         if (life >= 2)
         {
@@ -68,16 +71,19 @@ public class UiManager : MonoBehaviour
 
     public void SwitchToUpgradeUI()
     {
-        camPlatformer.SetActive(false);
-        camUpgrade.SetActive(true);
+        upgradeObject.SetActive(true);
+        platformerObject.SetActive(false);
         LifePointsPanel.SetActive(false);
         UpgradesPanel.SetActive(true);
     }
 
     public void SwitchToShmupUI()
     {
-        camUpgrade.SetActive(false);
-        camShmup.SetActive(true);
+        upgradeObject.SetActive(false);
+        shmupObject.SetActive(true);
+        LifePoints[3].gameObject.SetActive(true);
+        LifePoints[4].gameObject.SetActive(true);
+
     }
 
     private string IntToSprite(int number)

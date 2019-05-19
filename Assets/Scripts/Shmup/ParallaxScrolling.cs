@@ -13,6 +13,8 @@ public class ParallaxScrolling : MonoBehaviour
     private List<SpriteRenderer> backgroundPart;
     private Vector2 repeatableSize;
 
+    public GameObject vCam;
+
     void Start()
     {
         // For infinite background only
@@ -75,7 +77,7 @@ public class ParallaxScrolling : MonoBehaviour
         // Move the camera
         if (moveCamera)
         {
-            Camera.main.transform.Translate(movement);
+            vCam.transform.Translate(movement);
         }
 
         // Loop

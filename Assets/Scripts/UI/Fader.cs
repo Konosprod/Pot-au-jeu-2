@@ -41,6 +41,62 @@ public class Fader : MonoBehaviour
         StartCoroutine(fadeIntro());
     }
 
+
+    public void StartFade()
+    {
+        StartCoroutine(Fade());
+    }
+
+    public void StartFadeOut()
+    {
+        StartCoroutine(FadeOut());
+    }
+
+
+    public IEnumerator Fade()
+    {
+        elaspedTime = 0;
+        ownFade.gameObject.SetActive(true);
+
+        while (elaspedTime < fadeTime)
+        {
+            /*
+                float percentage = elaspedTime / fadeTime;
+                ownFade.color = new Color(toFade.color.r, toFade.color.g, toFade.color.b, Mathf.Lerp(1, 0, percentage));
+            */
+            float percentage = elaspedTime / fadeTime;
+            ownFade.color = new Color(ownFade.color.r, ownFade.color.g, ownFade.color.b, Mathf.Lerp(0, 01, percentage));
+
+
+            elaspedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+    }
+
+    public IEnumerator FadeOut()
+    {
+        elaspedTime = 0;
+        ownFade.gameObject.SetActive(true);
+
+        while (elaspedTime < fadeTime)
+        {
+            
+                float percentage = elaspedTime / fadeTime;
+                ownFade.color = new Color(ownFade.color.r, ownFade.color.g, ownFade.color.b, Mathf.Lerp(1, 0, percentage));
+            /*
+            float percentage = elaspedTime / fadeTime;
+            ownFade.color = new Color(ownFade.color.r, ownFade.color.g, ownFade.color.b, Mathf.Lerp(0, 01, percentage));
+            */
+
+            elaspedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+    }
+
     private IEnumerator FadeToScene(string sceneName)
     {
         elaspedTime = 0;
