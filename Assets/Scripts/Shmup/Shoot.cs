@@ -11,6 +11,8 @@ public class Shoot : MonoBehaviour
     protected float shootDelay;
     public float initialDelay = 0.3f;
 
+    public float damage = 1f;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -34,6 +36,7 @@ public class Shoot : MonoBehaviour
 
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             bullet.GetComponent<BulletController>().direction = transform.right;
+            bullet.GetComponent<BulletController>().damage = damage;
             bullet.transform.Rotate(new Vector3(0f, 0f, -90f));
         }
     }

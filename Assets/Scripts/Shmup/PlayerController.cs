@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Attack")]
     public Shoot mainShot;
-    public Shoot multiShot;
+    public MultiShot multiShot;
 
     private ParallaxScrolling scrolling;
 

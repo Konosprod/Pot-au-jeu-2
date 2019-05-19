@@ -6368,9 +6368,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8971615126440723376, guid: 8a98139041b901f4dbbf5c7c63d67c31,
     type: 3}
-  fireRate: 4.5
+  fireRate: 2.5
   initialDelay: 0
-  nbProj: 7
+  damage: 1
+  nbProj: 3
   maxTotalAngle: 50
   maxIndividualAngle: 20
 --- !u!114 &95309941
@@ -6387,8 +6388,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8971615126440723376, guid: 8a98139041b901f4dbbf5c7c63d67c31,
     type: 3}
-  fireRate: 24
+  fireRate: 12
   initialDelay: 0
+  damage: 1
 --- !u!114 &95309942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37940,7 +37942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 302.6, y: 8.1}
+  m_AnchoredPosition: {x: 302.59998, y: 8.099976}
   m_SizeDelta: {x: -875.5, y: -340.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1462882331
@@ -38022,8 +38024,8 @@ MonoBehaviour:
   shmupPlayer: {fileID: 95309942}
   buttonHealth: {fileID: 942399137}
   buttonDamages: {fileID: 173362527}
-  buttonFireRate: {fileID: 881829393}
-  buttonWeapon: {fileID: 890185932}
+  buttonFireRate: {fileID: 890185932}
+  buttonWeapon: {fileID: 881829393}
 --- !u!1001 &1481980818
 PrefabInstance:
   m_ObjectHideFlags: 0

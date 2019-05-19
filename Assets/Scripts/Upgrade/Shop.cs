@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
     public UiManager ui;
     public PlayerPlateformerController plateformPlayer;
     public PlayerController shmupPlayer;
+    private Health shmupHealth;
 
     [Header("Buttons")]
     public GameObject buttonHealth;
@@ -28,6 +29,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         leaves = plateformPlayer.leaves;
+        shmupHealth = shmupPlayer.GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -46,11 +48,15 @@ public class Shop : MonoBehaviour
         {
             indexFireRate++;
             buttonFireRate.GetComponentInChildren<Text>().text = "Fréquence de Tirs (" + prices[indexFireRate].ToString() + ")";
+            shmupPlayer.mainShot.fireRate += 3f;
+            shmupPlayer.multiShot.fireRate += 0.5f;
         }
         else
         {
             buttonFireRate.GetComponentInChildren<Text>().text = "Vendu !";
             buttonFireRate.GetComponent<Button>().interactable = false;
+            shmupPlayer.mainShot.fireRate += 6f;
+            shmupPlayer.multiShot.fireRate += 1f;
         }
 
         checkLeaves();
@@ -66,11 +72,13 @@ public class Shop : MonoBehaviour
         {
             indexHealth++;
             buttonHealth.GetComponentInChildren<Text>().text = "Vie (" + prices[indexHealth].ToString() + ")";
+            shmupHealth.hp += 4;
         }
         else
         {
             buttonHealth.GetComponentInChildren<Text>().text = "Vendu !";
             buttonHealth.GetComponent<Button>().interactable = false;
+            shmupHealth.hp += 4;
         }
 
         checkLeaves();
@@ -86,11 +94,15 @@ public class Shop : MonoBehaviour
         {
             indexDamages++;
             buttonDamages.GetComponentInChildren<Text>().text = "Dégâts (" + prices[indexDamages].ToString() + ")";
+            shmupPlayer.mainShot.damage += 0.5f;
+            shmupPlayer.multiShot.damage += 0.5f;
         }
         else
         {
             buttonDamages.GetComponentInChildren<Text>().text = "Vendu !";
             buttonDamages.GetComponent<Button>().interactable = false;
+            shmupPlayer.mainShot.damage += 1f;
+            shmupPlayer.multiShot.damage += 1f;
         }
 
         checkLeaves();
@@ -106,11 +118,13 @@ public class Shop : MonoBehaviour
         {
             indexWeapon++;
             buttonWeapon.GetComponentInChildren<Text>().text = "Arme (" + prices[indexWeapon].ToString() + ")";
+            shmupPlayer.multiShot.nbProj += 1;
         }
         else
         {
             buttonWeapon.GetComponentInChildren<Text>().text = "Vendu !";
             buttonWeapon.GetComponent<Button>().interactable = false;
+            shmupPlayer.multiShot.nbProj += 2;
         }
 
         checkLeaves();
